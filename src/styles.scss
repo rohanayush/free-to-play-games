@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+$fontSize:15px;
+$fontFamily:monospace,'Courier New', Courier,Arial;
+$padding:10px;
+$color:rgb(163, 163, 163);
+$background:black;
+
+*{
+    margin:0;
+    padding:0;
+    border:none;
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    color: $color;
+    // box-shadow:1px 10px 10px 1px grey;
+}
+
