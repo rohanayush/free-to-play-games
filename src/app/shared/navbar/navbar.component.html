@@ -1,47 +1,57 @@
 <div class="container">
   <ul>
+    <li>Home</li>
     <li (click)="toggleSubMenu('category')">Category</li>
     <li (click)="toggleSubMenu('pc-games')">Personal Computer Games</li>
     <li (click)="toggleSubMenu('browser-games')">Browser Games</li>
     <li (click)="toggleSubMenu('search')">Search</li>
   </ul>
-  <div class="submenu" *ngIf="isSubMenuOpen('category')">
-    <ul>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
-    <!-- Additional category menu options -->
-  </div>
+  <div class="container-submenu">
+    <div class="submenu" *ngIf="isSubMenuOpen('category')">
+      <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+      <!-- Additional category menu options -->
+      <div class="box"></div>
+    </div>
 
-  <div class="submenu" *ngIf="isSubMenuOpen('pc-games')">
-    <!-- Additional personal computer games menu options -->
-    <ul>
-      <li>2</li>
-      <li>123</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
-  </div>
+    <div class="submenu" *ngIf="isSubMenuOpen('pc-games')">
+      <!-- Additional personal computer games menu options -->
+      <ul>
+        <li>2</li>
+        <li>123</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+      <div class="box"></div>
 
-  <div class="submenu" *ngIf="isSubMenuOpen('browser-games')">
-    <ul>
-      <li>wrwef1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
-    <!-- Additional browser games menu options -->
-  </div>
+    </div>
 
-  <div class="submenu" *ngIf="isSubMenuOpen('search')">
-    <!-- Additional search menu options -->
-    <ul>
-      <li>1ere</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
+    <div class="submenu" *ngIf="isSubMenuOpen('browser-games')">
+      <ul>
+        <li>wrwef1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+      <div class="box"></div>
+
+      <!-- Additional browser games menu options -->
+    </div>
+
+    <div class="submenu" *ngIf="isSubMenuOpen('search')">
+      <!-- Additional search menu options -->
+      <ul>
+        <li>1ere</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+      <div class="box"></div>
+
+    </div>
   </div>
 </div>
