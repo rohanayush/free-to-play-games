@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet, provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { SharedModule } from './shared/shared.module';
+import { GameService } from './services/game.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,9 +17,11 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     RouterOutlet,
     SharedModule,
+    HttpClientModule
   ],
   providers: [
     provideRouter(routes), // Provide the router
+    GameService
   ],
   bootstrap: [AppComponent],
 })
