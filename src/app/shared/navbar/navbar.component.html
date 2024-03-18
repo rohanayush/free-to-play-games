@@ -7,29 +7,24 @@
     <li (click)="toggleSubMenu('search')">Search</li>
   </ul>
   <div class="container-submenu">
-
     @if (isSubMenuOpen('category')) {
 
     <div class="submenu">
       <ul>
         @for (item of genreArray; track $index) {
-        <li (click)="fetchGenreTag(item)" >{{ item }}</li>
+        <li (click)="fetchGenreTag(item)">{{ item }}</li>
         }
       </ul>
       <!-- Additional category menu options -->
-      <div class="box"></div>
     </div>
 
-    } 
+    } @if (isSubMenuOpen('search')) {
 
-    @if (isSubMenuOpen('search')) {
-
-    <div class="submenu center">
-     <input type="text" placeholder="Search">
-     <button>
-      Search
-     </button>
-      <!-- <div class="box"></div> -->
+    <div class="submenu">
+      <div class="center">
+        <input #searchInput type="text" placeholder="Search" autofocus="true" />
+        <button>Search</button>
+      </div>
     </div>
 
     }

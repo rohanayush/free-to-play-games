@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { GameService } from '../../services/game.service';
 
 @Component({
@@ -7,7 +7,16 @@ import { GameService } from '../../services/game.service';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  constructor(private gameService: GameService) {}
+  @ViewChild('searchInput') searchInput!: ElementRef;
+  openSubMenu: string | null = null;
+
+  constructor(
+    private gameService: GameService,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
+  ) {}
+
+
   genreArray = [
     'mmorpg',
     'shooter',
@@ -56,39 +65,44 @@ export class NavbarComponent {
     'mmorts',
   ];
 
+
   ngOnInit() {
-    // this.gameService.getHomeContent().subscribe((data: any) => {
-    //   console.log('data', data);
-    // });
     this.getHome();
   }
-  openSubMenu: string | null = null;
+  
 
-  getHome(){
-    this.openSubMenu="home";
+  ngAfterViewInit() {
+    setTimeout(() => {
+      console.log('eleemnr:', this.searchInput);
+    }, 5000);
+    if (this.isSubMenuOpen('search')) {
+    }
+  }
+
+  getHome() {
+    this.openSubMenu = 'home';
     this.gameService.getHomeContent().subscribe((data: any) => {
-      console.log('data', data);
+      console.log( data);
     });
-
   }
 
   toggleSubMenu(subMenu: string) {
     this.openSubMenu = this.openSubMenu === subMenu ? null : subMenu;
-    if(this.openSubMenu && this.openSubMenu == "pc-games"){
-      this.gameService.getComputerGames().subscribe(
-        (pcGames:any)=>{
-          console.log("PC Games:\n",pcGames);
-          
-        }
-      )
+    if (this.openSubMenu && this.openSubMenu == 'pc-games') {
+      this.gameService.getComputerGames().subscribe((pcGames: any) => {
+        console.log('PC Games:\n', pcGames);
+      });
     }
-    if(this.openSubMenu && this.openSubMenu == "browser-games"){
-      this.gameService.getBrowserGames().subscribe(
-        (pcGames:any)=>{
-          console.log("Browser Games:\n",pcGames);
-          
-        }
-      )
+    if (this.openSubMenu && this.openSubMenu == 'browser-games') {
+      this.gameService.getBrowserGames().subscribe((pcGames: any) => {
+        console.log('Browser Games:\n', pcGames);
+      });
+    }
+    if (this.openSubMenu && this.openSubMenu == 'search') {
+      // alert(this.openSubMenu);
+      setTimeout(() => {
+        this.focusSearchInput();
+      }, 1000);
     }
   }
 
@@ -96,11 +110,13 @@ export class NavbarComponent {
     return this.openSubMenu === subMenu;
   }
 
-  fetchGenreTag(genreQuery:string){
-    this.gameService.getByGenreTag(genreQuery).subscribe(
-      (tagData:any)=>{
-        console.log("Response :\n",tagData)
-      }
-    )
+  fetchGenreTag(genreQuery: string) {
+    this.gameService.getByGenreTag(genreQuery).subscribe((tagData: any) => {
+      console.log('Response :\n', tagData);
+    });
+  }
+
+  focusSearchInput() {
+    this.searchInput.nativeElement.autofocus = true;
   }
 }

@@ -8,6 +8,8 @@
     animation: expand 2s ease;
 
     width: 100%;
+    // box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+    height: max-content ;
     // border-bottom: 1px solid grey;
 
     ul {
@@ -16,13 +18,21 @@
         justify-content: space-around;
         align-items: baseline;
         width: 100%;
+        li{
+            &:hover{
+                transform: scale(1.15);
+                color:#0070D1;
+            }
+        }
     }
 
     .container-submenu {
+        // position: absolute;
+        z-index: 101;
         .submenu {
             animation: skew 1s forwards;
             position: relative;
-            margin-top: 20px;
+            margin: 20px;
             text-transform: uppercase;
             font-weight: 600;
 
@@ -32,27 +42,21 @@
                 border-radius: 12px;
                 box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
                 width: 40%;
-                transition: all 1s ease;
+                transition: box-shadow 1s ease;
 
 
                 /* Bottom shadow */
                 &:focus {
                     outline: none;
-                    box-shadow: 0px 5px 20px rgba(79, 224, 26, 0.5);
-                    transform: scale(1.05);
-                    font-size: 18px;
+                    // box-shadow: 0px 5px 20px rgba(79, 224, 26, 0.5);
+                    // transform: scale(1.05);
+                    // font-size: 18px;
 
 
                 }
             }
 
-            .box {
-                box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
-                /* Bottom shadow */
-                height: 1px;
-                width: 100%;
-                // border:1px solid rgba(0, 0, 0, 0.5);
-            }
+
 
             ul {
                 display: flex;
@@ -60,7 +64,9 @@
                 gap: 100px;
                 max-width: 100%;
                 overflow: auto;
+
                 // width: 40%;
+
 
                 li {
                     /* Make all <li> elements take equal space */
@@ -93,18 +99,22 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-
+            margin-top:10px;
+            // height:80px;
             button {
                 border: none;
                 box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
                 padding: 10px;
                 border-radius: 12px;
-                transition: all 1s ease;
+                transition: all 0.5s ease;
+                background: rgba($color: #526e2e, $alpha: 0.7);
+                color: white;
+
 
                 &:hover {
-                    background: rgba(79, 224, 26, 0.5);
-                    color: white;
-                    transform: scale(1.1);
+                    // background: rgba($color: #526e2e, $alpha: 0.3);
+
+                    transform: scale(1.05);
                 }
 
             }
@@ -138,4 +148,43 @@
         opacity: 1;
 
     }
+}
+
+// for scrollbar 
+/* Hide scrollbar but still scrollable */
+::-webkit-scrollbar {
+    width: 1px;
+    /* adjust as needed */
+    height: 1px;
+    /* adjust as needed */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* or any background color you want */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* or any color you want */
+    border-radius: 12px;
+    /* roundness of the thumb */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    /* box shadow */
+}
+
+/* For Firefox */
+/* you may need to adjust the scrollbar width and other properties accordingly */
+/* Firefox does not support ::-webkit-scrollbar */
+/* these styles will only be applied to Firefox */
+* {
+    scrollbar-width: 3px;
+    /* or thick or none */
+    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.3) ;
+}
+
+*::-moz-scrollbar-thumb {
+    background: #888;
+    border-radius: 12px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
 }
